@@ -90,3 +90,26 @@ func PostsUpdate(c *gin.Context) {
 		"post": post,
 	})
 }
+
+func PostsDelete(c *gin.Context) {
+	var post models.Post
+	result := initializers.DB.First(&post, c.Param("id"))
+	if result.Error != nil {
+		c.JSON(400, gin.H{
+			"error": result.Error,
+		})
+		return
+	}
+
+	result = initializers.DB.Delete(&post)
+	if result.Error != nil {
+		c.JSON(400, gin.H{
+			"error": result.Error,
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"post": post,
+	})
+}
