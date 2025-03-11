@@ -1,10 +1,10 @@
 CompileDaemon -command="./go-crud"       
 
 
-curl -X POST http://localhost:3000/posts
 
 
 
-post request  curl -X POST http://localhost:3000/posts \
+get request : curl -X POST http://localhost:3000/posts
+post request : curl -X POST http://localhost:3000/posts \
      -H "Content-Type: application/json" \
      -d '{"title": "Alice", "body": "alice@example.com"}'
